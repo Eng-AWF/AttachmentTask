@@ -2,7 +2,7 @@
 {
     public static class AddCorsPolicyExtension
     {
-        public static void AddCrosPolicyEx(this IServiceCollection services)
+        public static IServiceCollection AddCrosPolicyEx(this IServiceCollection services)
         {
             services.AddCors(options =>
             {
@@ -14,6 +14,8 @@
                                       builder.AllowAnyMethod(); //get,post,....
                                   });
             });
+
+            return services;
         }
     }
 }

@@ -1,10 +1,18 @@
 using EmployeeAttachment.API.Extensions;
+using EmployeeAttachment.Application;
+using EmployeeAttachment.Infrastructure;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddCrosPolicyEx();
-builder.Services.AddDbContext(builder.Configuration);
+builder.Services.AddCrosPolicyEx()
+    .AddDbContext(builder.Configuration)
+    .AddInfrastructureDependencies()
+    .AddApplicationDependencies();
+
+
+
 
 
 builder.Services.AddControllers();

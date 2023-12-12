@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeAttachment.Application.Features.Attachment.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace EmployeeAttachment.Application.Persistence
 {
     public interface IAttachmentRepository
     {
-
+        Task<bool> AddAttachment(AddAttachmentCommand addAttachmentCommand);
     }
 }

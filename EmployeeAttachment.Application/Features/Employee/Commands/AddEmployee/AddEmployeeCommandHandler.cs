@@ -4,8 +4,7 @@ namespace EmployeeAttachment.Application.Features.Employee.Commands.AddEmployee
 {
     public class AddEmployeeCommandHandler : IRequestHandler<AddEmployeeCommand>
     {
-
-        public Task<Unit> Handle(AddEmployeeCommand request, CancellationToken cancellationToken)
+        public Task Handle(AddEmployeeCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
