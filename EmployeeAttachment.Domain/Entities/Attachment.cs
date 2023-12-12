@@ -1,9 +1,4 @@
 ﻿using EmployeeAttachment.Domain.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeAttachment.Domain.Entities
 {
@@ -16,7 +11,8 @@ namespace EmployeeAttachment.Domain.Entities
         public Guid? EmployeeId { get; private set; }
         public Employee? Employee { get; private set; }
 
-        private Attachment() { }
+        private Attachment()
+        { }
 
         public Attachment(string fileName, string description, byte[] fileData, Guid employeeId)
         {
