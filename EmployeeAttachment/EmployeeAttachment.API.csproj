@@ -15,4 +15,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeAttachment.Application\EmployeeAttachment.Application.csproj" />
+    <ProjectReference Include="..\EmployeeAttachment.Infrastructure\EmployeeAttachment.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
