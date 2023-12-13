@@ -8,17 +8,20 @@ namespace EmployeeAttachment.Domain.Entities
         public string? Description { get; private set; }
         public byte[]? FileData { get; private set; }
 
+        public DateTime? UploadDate { get; private set; }
+
         public Guid? EmployeeId { get; private set; }
         public Employee? Employee { get; private set; }
 
         private Attachment()
         { }
 
-        public Attachment(string fileName, string description, byte[] fileData, Guid employeeId)
+        public Attachment(string fileName, string description, byte[] fileData, DateTime uploadDate, Guid employeeId)
         {
             FileName = fileName;
             Description = description;
             FileData = fileData;
+            UploadDate = uploadDate;
             EmployeeId = employeeId;
         }
     }

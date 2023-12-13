@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EmployeeAttachment.Application.Features.Attachment.Commands
+namespace EmployeeAttachment.Application.Features.Attachment.Commands.AddAttachment
 {
-    public class AddAttachmentCommandHandler : IRequestHandler<AddAttachmentCommand,bool>
+    public class AddAttachmentCommandHandler : IRequestHandler<AddAttachmentCommand, bool>
     {
         private readonly IAttachmentRepository _attachmentRepository;
         public AddAttachmentCommandHandler(IAttachmentRepository attachmentRepository)
