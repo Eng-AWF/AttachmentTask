@@ -1,6 +1,7 @@
 ﻿using EmployeeAttachment.Domain.Primitives;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -10,15 +11,19 @@ namespace EmployeeAttachment.Domain.Entities
 {
     public class Employee : AggregateRoot
     {
+        private decimal? salary;
+
         public string? FirstName { get; private set; }
         public string? LastName { get; private set; }
         public string? Email { get; private set; }
-        public string? Image { get; private set; }
-        public decimal? Salary { get; private set; }
+        public string? Image { get;  set; }
+        public int? Salary { get; private set; }
         public string? Phone { get; private set; }
         public string? FullName { get; private set; }
         public DateTime HireDate { get; private set; }
-        public Address? Address { get; private set; }
+        public string? Country { get; private set; }
+        public string? City { get; private set; }
+
 
 
         public ICollection<Attachment>? Attachments { get; private set; }
@@ -27,21 +32,39 @@ namespace EmployeeAttachment.Domain.Entities
 
         //public IEnumerable<Attachment> Attachments => _attachments;
 
-        private Employee() { }
+        public Employee() { }
 
-        public Employee(string firstName, string lastName, string email, string image, decimal salary, string phone, string fullName , DateTime hireDate, Address? address)
+        //public Employee(string firstName, string lastName, string email, string image, int salary, string phone, string fullName , DateTime hireDate, string country, string city)
+        //{
+        //    FirstName = firstName;
+        //    LastName = lastName;
+        //    Email = email;
+        //    Image = image;
+        //    Salary = salary;
+        //    Phone = phone;
+        //    FullName = fullName;
+        //    HireDate = hireDate;
+        //    Country = country;
+        //    City = city;
+        //    Attachments = new List<Attachment>();
+        //}
+
+        public Employee(string? firstName, string? lastName, string? email, string? image, decimal? salary, string? phone, DateTime hireDate, string? fullName, string? country, string? city)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Image = image;
-            Salary = salary;
+            this.salary = salary;
             Phone = phone;
-            FullName = fullName;
             HireDate = hireDate;
-            Address = address;
+            FullName = fullName;
+            Country = country;
+            City = city;
             Attachments = new List<Attachment>();
         }
+
+       
 
         //public void AddAttachment(Attachment attachment)
         //{

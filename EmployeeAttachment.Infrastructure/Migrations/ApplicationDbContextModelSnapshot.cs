@@ -56,6 +56,12 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -77,8 +83,8 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("Salary")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int?>("Salary")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -93,30 +99,6 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("EmployeeAttachment.Domain.Entities.Employee", b =>
-                {
-                    b.OwnsOne("EmployeeAttachment.Domain.Entities.Address", "Address", b1 =>
-                        {
-                            b1.Property<Guid>("EmployeeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("City")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Country")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("EmployeeId");
-
-                            b1.ToTable("Employee");
-
-                            b1.WithOwner()
-                                .HasForeignKey("EmployeeId");
-                        });
-
-                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("EmployeeAttachment.Domain.Entities.Employee", b =>

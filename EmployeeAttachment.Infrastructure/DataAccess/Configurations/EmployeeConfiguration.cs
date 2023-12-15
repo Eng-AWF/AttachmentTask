@@ -19,8 +19,8 @@ namespace EmployeeAttachment.Infrastructure.DataAccess.Configurations
             builder
                 .HasKey(e => e.Id);
 
-            builder
-                .OwnsOne(d => d.Address);
+            //builder
+            //    .OwnsOne(d => d.Address);
 
             //builder.HasData(new Employee("Awf", "Alhalaybeh", "Awf@gmail.com", "", 500, "0770612989", "Awf Alhalaybeh",
             //    DateTime.UtcNow, new Address("Amman", "Jordan")

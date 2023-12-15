@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeAttachment.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231213053957_AddDateTimeToAtchEntity")]
-    partial class AddDateTimeToAtchEntity
+    [Migration("20231214052331_ll44")]
+    partial class ll44
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UploadDate")
+                    b.Property<DateTime?>("UploadDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -58,6 +58,12 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -80,8 +86,8 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("Salary")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int?>("Salary")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -96,30 +102,6 @@ namespace EmployeeAttachment.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("EmployeeAttachment.Domain.Entities.Employee", b =>
-                {
-                    b.OwnsOne("EmployeeAttachment.Domain.Entities.Address", "Address", b1 =>
-                        {
-                            b1.Property<Guid>("EmployeeId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("City")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Country")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("EmployeeId");
-
-                            b1.ToTable("Employee");
-
-                            b1.WithOwner()
-                                .HasForeignKey("EmployeeId");
-                        });
-
-                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("EmployeeAttachment.Domain.Entities.Employee", b =>

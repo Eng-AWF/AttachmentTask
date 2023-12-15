@@ -13,6 +13,8 @@ namespace EmployeeAttachment.Application.Features.Employee.Commands.AddEmployee
         public string? Phone { get; set; }
         public string? FullName { get; set; }
         public DateTime HireDate { get; set; }
-        public Address? Address { get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
+
     }
 }
