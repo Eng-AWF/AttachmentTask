@@ -64,6 +64,20 @@ namespace EmployeeAttachment.Domain.Entities
             Attachments = new List<Attachment>();
         }
 
+        public void UpdateEmployee(string? firstName, string? lastName, string? email, string? image, decimal? salary, string? phone, DateTime hireDate, string? fullName, string? country, string? city)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Image = image;
+            this.salary = salary;
+            Phone = phone;
+            HireDate = hireDate;
+            FullName = fullName;
+            Country = country;
+            City = city;
+            Attachments = new List<Attachment>();
+        }
        
 
         //public void AddAttachment(Attachment attachment)
