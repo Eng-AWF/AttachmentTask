@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EmployeeAttachment.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,13 @@ namespace EmployeeAttachment.Infrastructure.Services
     {
         //public int OneMBSize = 1024 * 1024;
 
-        public string _fielsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+        /*
+         
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot\EmployeesFiles\{employeeId}");
+         */
+
+
+        public string _fielsFolder = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images");
 
 
         public async Task<string> SaveFile(IFormFile file)

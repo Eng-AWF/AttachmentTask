@@ -8,7 +8,7 @@ namespace EmployeeAttachment.Domain.Entities
         public string? Description { get;  set; }
         public string? FilePath { get;  set; }
 
-        public DateTime? UploadDate { get;  set; }
+        public DateTime? UploadDate { get;  set; } 
 
         public Guid? EmployeeId { get;  set; }
         public Employee? Employee { get;  set; }

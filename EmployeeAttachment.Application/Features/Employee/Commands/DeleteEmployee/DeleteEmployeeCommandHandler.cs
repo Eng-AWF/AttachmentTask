@@ -11,7 +11,7 @@ namespace EmployeeAttachment.Application.Features.Employee.Commands.DeleteEmploy
     public class DeleteEmployeeCommandHandler : IRequestHandler<DeleteEmployeeCommand>
     {
 
-        public readonly ApplicationDbContext _applicationDbContext;
+        private readonly ApplicationDbContext _applicationDbContext;
         public DeleteEmployeeCommandHandler(ApplicationDbContext applicationDbContext)
         {
             _applicationDbContext = applicationDbContext;
