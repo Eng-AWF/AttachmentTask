@@ -31,7 +31,7 @@ namespace EmployeeAttachment.Application.Features.Employee.Queries.GetEmployeeIn
             response.FirstName = employee.FirstName;
             response.LastName = employee.LastName;
             response.Email = employee.Email;
-            response.Image = employee.Image;
+            response.ImagePath = employee.ImagePath;
             response.Salary = employee.Salary;
             response.Phone = employee.Phone;
             response.HireDate = employee.HireDate;

@@ -17,12 +17,13 @@ namespace EmployeeAttachment.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost ("AddAttachment")]
-        public async Task<IActionResult> AddAttachment(AddAttachmentDto addAttachmentDto)
+        [HttpPost ("AddAttachment/{employeeId}")]
+        public async Task<IActionResult> AddAttachment(Guid employeeId,[FromForm] empdata empdata , List<IFormFile> files)
         {
-            
             return Ok();
         }
+
+
 
         [HttpPost("AddAttachment2")]
         public IActionResult UploadFiles( FileUploadDTO fileUploadDTO)
@@ -58,4 +59,12 @@ namespace EmployeeAttachment.API.Controllers
             }
         }
     }
+
+    public class empdata
+    {
+        public string Name { get; set; }
+    }
+
+
+
 }

@@ -34,6 +34,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("crossOrigin");
 app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+
 app.UseAuthorization();
 
 app.MapControllers();

@@ -4,25 +4,17 @@ namespace EmployeeAttachment.Domain.Entities
 {
     public class Attachment : BaseEntity
     {
-        public string? FileName { get; private set; }
-        public string? Description { get; private set; }
-        public byte[]? FileData { get; private set; }
+        public string? FileName { get;  set; }
+        public string? Description { get;  set; }
+        public string? FilePath { get;  set; }
 
-        public DateTime? UploadDate { get; private set; }
+        public DateTime? UploadDate { get;  set; }
 
-        public Guid? EmployeeId { get; private set; }
-        public Employee? Employee { get; private set; }
+        public Guid? EmployeeId { get;  set; }
+        public Employee? Employee { get;  set; }
 
-        private Attachment()
-        { }
+        
 
-        public Attachment(string fileName, string description, byte[] fileData, DateTime uploadDate, Guid employeeId)
-        {
-            FileName = fileName;
-            Description = description;
-            FileData = fileData;
-            UploadDate = uploadDate;
-            EmployeeId = employeeId;
-        }
+        
     }
 }

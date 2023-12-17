@@ -24,7 +24,7 @@ namespace EmployeeAttachment.Application.Features.Employee.Queries.GetAllEmploye
                     FirstName = e.FirstName,
                     LastName = e.LastName,
                     Email = e.Email,
-                    Image = e.Image,
+                    Image = e.ImagePath,
                     Salary = e.Salary,
                     Phone = e.Phone,
                     FullName = e.FullName,
