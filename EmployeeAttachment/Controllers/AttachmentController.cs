@@ -33,13 +33,7 @@ namespace EmployeeAttachment.API.Controllers
         [HttpPost("AddAttachment/{employeeId}")]
         public async Task<IActionResult> AddAttachment(Guid employeeId, List<IFormFile> files)
         {
-            //if (files.Count > 0)
-            //{
-            //    var employeeFilePath = CreateNewEmployeeFolder(employeeId);
-            //    return Ok(await CopyFilesToEmployeeFile(files, employeeId, employeeFilePath));
-            //}
-            //return Ok();
-
+           
             
                 if (files.Count > 0)
                 {
@@ -48,7 +42,7 @@ namespace EmployeeAttachment.API.Controllers
 
                     foreach (var file in files)
                     {
-                        if (file.Length <= 1024 * 1024) // 2 MB (2 * 1024 * 1024 bytes)
+                        if (file.Length <= 1024 * 1024) 
                         {
                             validFiles.Add(file);
                         }
@@ -60,7 +54,7 @@ namespace EmployeeAttachment.API.Controllers
                     }
                     else
                     {
-                        return BadRequest("File size exceeds the maximum allowed limit (2 MB).");
+                        return BadRequest("File size exceeds the maximum allowed limit (1 MB).");
                     }
                 }
 
