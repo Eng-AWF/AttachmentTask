@@ -1,9 +1,6 @@
-﻿using EmployeeAttachment.API.DTO;
-using EmployeeAttachment.Application.Features.Attachment.Commands.AddAttachment;
-using EmployeeAttachment.Domain.Entities;
+﻿using EmployeeAttachment.Domain.Entities;
 using EmployeeAttachment.Infrastructure.DataAccess;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +13,6 @@ namespace EmployeeAttachment.API.Controllers
         private readonly IMediator _mediator;
         private readonly ApplicationDbContext _applicationDbContext;
         private readonly IWebHostEnvironment _appEnvironment;
-
 
         public AttachmentController(IMediator mediator, ApplicationDbContext applicationDbContext, IWebHostEnvironment appEnvironment)
         {
@@ -37,12 +33,39 @@ namespace EmployeeAttachment.API.Controllers
         [HttpPost("AddAttachment/{employeeId}")]
         public async Task<IActionResult> AddAttachment(Guid employeeId, List<IFormFile> files)
         {
-            if (files.Count > 0)
-            {
-                var employeeFilePath = CreateNewEmployeeFolder(employeeId);
-                return Ok(await CopyFilesToEmployeeFile(files, employeeId, employeeFilePath));
-            }
-            return Ok();
+            //if (files.Count > 0)
+            //{
+            //    var employeeFilePath = CreateNewEmployeeFolder(employeeId);
+            //    return Ok(await CopyFilesToEmployeeFile(files, employeeId, employeeFilePath));
+            //}
+            //return Ok();
+
+            
+                if (files.Count > 0)
+                {
+                    var employeeFilePath = CreateNewEmployeeFolder(employeeId);
+                    var validFiles = new List<IFormFile>();
+
+                    foreach (var file in files)
+                    {
+                        if (file.Length <= 1024 * 1024) // 2 MB (2 * 1024 * 1024 bytes)
+                        {
+                            validFiles.Add(file);
+                        }
+                    }
+
+                    if (validFiles.Count > 0)
+                    {
+                        return Ok(await CopyFilesToEmployeeFile(validFiles, employeeId, employeeFilePath));
+                    }
+                    else
+                    {
+                        return BadRequest("File size exceeds the maximum allowed limit (2 MB).");
+                    }
+                }
+
+                return Ok();
+            
         }
 
         private string CreateNewEmployeeFolder(Guid employeeId)
@@ -55,7 +78,6 @@ namespace EmployeeAttachment.API.Controllers
             return filePath;
         }
 
-
         private async Task<List<Attachment>> CopyFilesToEmployeeFile(List<IFormFile> files, Guid employeeId, string employeeFilePath)
         {
             var entityList = new List<Attachment>();
@@ -63,7 +85,6 @@ namespace EmployeeAttachment.API.Controllers
             {
                 string filePath = Path.Combine(Directory.GetCurrentDirectory(), $@"wwwroot\EmployeeAttachments\{employeeId}\{file.FileName}");
 
-                //string filePath = Path.Combine(_appEnvironment.WebRootPath, $@"EmployeeAttachments\{employeeId}\{file.FileName}");
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
@@ -75,12 +96,9 @@ namespace EmployeeAttachment.API.Controllers
                 fileEntity.UploadDate = DateTime.Now;
                 entityList.Add(fileEntity);
             }
-             _applicationDbContext.AddRange(entityList);
+            _applicationDbContext.AddRange(entityList);
             await _applicationDbContext.SaveChangesAsync();
             return entityList;
         }
-
-
-
     }
 }

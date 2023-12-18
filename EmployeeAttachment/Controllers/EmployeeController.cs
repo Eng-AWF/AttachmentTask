@@ -3,11 +3,8 @@ using EmployeeAttachment.Application.Features.Employee.Commands.DeleteEmployee;
 using EmployeeAttachment.Application.Features.Employee.Commands.UpdateEmployee;
 using EmployeeAttachment.Application.Features.Employee.Queries.GetAllEmployee;
 using EmployeeAttachment.Application.Features.Employee.Queries.GetEmployeeInfoById;
-using EmployeeAttachment.Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeAttachment.API.Controllers
 {
@@ -21,8 +18,6 @@ namespace EmployeeAttachment.API.Controllers
         {
             _mediator = mediator;
         }
-
-
 
         [HttpPost("Add")]
         public async Task<IActionResult> AddEmployee([FromForm] AddEmployeeCommand addEmployeeCommand)
@@ -59,7 +54,6 @@ namespace EmployeeAttachment.API.Controllers
             await _mediator.Send(updateEmployeeCommand);
             return Ok();
         }
-
 
         //[Route("uploadImage")]
         //[HttpPost]
@@ -111,9 +105,5 @@ namespace EmployeeAttachment.API.Controllers
         //    // Redirect to the appropriate action
         //    return RedirectToAction("Details", new { id = employee.Id });
         //}
-
-         
     }
-
 }
-

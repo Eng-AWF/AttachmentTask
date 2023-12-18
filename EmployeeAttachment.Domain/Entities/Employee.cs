@@ -1,22 +1,13 @@
 ﻿using EmployeeAttachment.Domain.Primitives;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeAttachment.Domain.Entities
 {
     public class Employee : AggregateRoot
     {
-        
-
         public string? FirstName { get; private set; }
         public string? LastName { get; private set; }
         public string? Email { get; private set; }
-        public string? ImagePath { get;  set; }
+        public string? ImagePath { get; set; }
         public int? Salary { get; private set; }
         public string? Phone { get; private set; }
         public string? FullName { get; private set; }
@@ -24,15 +15,10 @@ namespace EmployeeAttachment.Domain.Entities
         public string? Country { get; private set; }
         public string? City { get; private set; }
 
-
-
         public ICollection<Attachment>? Attachments { get; private set; }
 
-        
-
-        public Employee() { }
-
-        
+        public Employee()
+        { }
 
         public Employee(string? firstName, string? lastName, string? email, string? image, int? salary, string? phone, DateTime hireDate, string? fullName, string? country, string? city)
         {
@@ -63,6 +49,5 @@ namespace EmployeeAttachment.Domain.Entities
             City = city;
             Attachments = new List<Attachment>();
         }
-   
     }
 }
